@@ -6,3 +6,4 @@ if num > 1000000:
 elif num  >= 0:
     pass
 print(result)
+print("안녕하세요")

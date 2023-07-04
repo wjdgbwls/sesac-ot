@@ -2,7 +2,7 @@
 __pycache
 *.pyc
 affix.py
-
+text.html
 #mac북 파일
 .DS_Store
 #원치 않는 파일들을 커밋을 하지 않게 정해 둘 수 있음 
