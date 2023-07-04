@@ -1,7 +1,7 @@
 # 파이썬 컴파일/바이너리 파일
 __pycache
 *.pyc
-
+affix.py
 
 #mac북 파일
 .DS_Store
