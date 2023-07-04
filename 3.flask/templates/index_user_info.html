@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  table {
+      border-collapse: collapse;
+      width: 100%;
+  }
+
+  th,
+  td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+  }
+
+  th {
+      background-color: #ffa500;
+      color: white;
+  }
+
+  tr:nth-child(even) {
+      /* 추가 */
+      background-color: #f2f2f2;
+  }
+
+  .pagination {
+      margin-top: 20px;
+  }
+
+  .pagination a {
+      padding: 8px 16px;
+      text-decoration: none;
+      border: 1px solid #ddd;
+      margin: 0 4px;
+  }
+
+  .pagination a.active {
+      background-color: #4CAF50;
+      color: white;
+      border: 1px solid #4CAF50;
+  }
+
+
+</style>
+<body>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Age</th>
+      <th>Birthdate</th>
+      <th>Address</th>
+  </tr>
+  <tr>
+      <td>{{ user['Name'] }}</td>
+      <td>{{ user['Gender'] }}</td>
+      <td>{{ user['Age'] }}</td>
+      <td>{{ user['Birthdate'] }}</td>
+      <td>{{ user['Address'] }}</td>
+  </tr>
+  </table>
+  <button type="submit"><a href="/">돌아가기</a></button>
+
+</body>
+</html>

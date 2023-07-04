@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    첫 플라스크
+  </title>
+</head>
+
+<body>
+
+  <table border=1 width ="100%">
+  {% for i in username %}
+  <tr onclick="window.location='/user/{{ i.Name }}';"></tr>
+    <td width ="40%"><a href="/user/{{ i[0] }}">{{i[0]}}</a></td>
+    <td width ="150px">{{i[1]}} </td>
+    <td width ="150px">{{i[2]}}</td>
+    <td width ="150px">{{i[3]}}</td>
+    <td width ="150px">{{i[4]}}</td>
+    <td width ="150px">{{i[5]}}</td>
+  </tr>
+  {% endfor %}
+</table> 
+</body>
+
+</html>
