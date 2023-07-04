@@ -1,0 +1,10 @@
+import requests
+
+response = requests.get('https://www.naver.com/')
+
+search_str = '<h2>'
+contents = response.text
+
+for line in contents.splitlines():
+  if search_str in line:
+    print(line)
