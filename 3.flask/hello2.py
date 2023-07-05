@@ -13,7 +13,9 @@ app = Flask(__name__)
 def page_index():
     page = request.args.get('page', default =1, type=int)
     search_name = request.args.get('q', default='', type =str)
+    gender = request.args.get('gender', default='', type =str)
     data=[]
+    gender_data=[]
     per_page = 10
     csv_file_path = "./csvfile/user.csv"
     with open(csv_file_path, 'r', encoding='UTF-8') as file:
@@ -21,10 +23,15 @@ def page_index():
 
       # 검색어를 포함하는 결과 필터링
       for row in csv_data:
-        if search_name in row['Name']:
+        if search_name in row['Name'] and gender == row['Gender']:
           data.append(row)
+        elif gender == '':
+          data.append(row)
+            
+         ##############여기 gender를 확인하고 그걸 추가하는 줄 하나 ....넣기
       # 현재 페이지 계산
       current_page = page
+
       # 현재 페이지 그룹 번호 계산
       current_group = (page - 1) // per_page
       
@@ -43,7 +50,8 @@ def page_index():
       start_page = current_group * per_page + 1
       end_page = min(start_page + per_page, total_pages)
       
-      return render_template("home.html", datas=paginated_results , total_pages=total_pages, page=page, search_name=search_name, start_page=start_page, end_page=end_page, pags=current_page)
+      return render_template("home.html", datas=paginated_results , total_pages=total_pages,
+                              page=page, search_name=search_name, start_page=start_page, end_page=end_page, pags=current_page, gender = gender)
 
               
 # @app.route('/<name>')
