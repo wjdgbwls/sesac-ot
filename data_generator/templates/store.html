@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <table border=1 width ="100%">
+    {% for i in storename %}
+    <tr>
+      <td width ="40%">{{i['Name']}}</td>
+      <td width ="150px">{{i[Type]}}</td>
+      <td width ="150px">{{i[Address]}}</td>
+      
+    </tr>
+    {% endfor %}
+  </table> 
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #ffa500;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            /* 추가 */
+            background-color: #f2f2f2;
+        }
+
+        .nav {
+            text-align: center;
+            height: 50px;
+            width: 100%;
+            list-style: none;
+        }
+
+        li {
+            display: inline-block;
+            text-align: center;
+            margin-right: 40px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        li a {
+            color: black;
+            padding: 8px 16px;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            margin: 0 4px;
+        }
+
+        .pagination {
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            padding: 8px 16px;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            margin: 0 4px;
+        }
+
+        .pagination a.active {
+            background-color: #4CAF50;
+            color: white;
+            border: 1px solid #4CAF50;
+        }
+
+        .pagination a:hover:not(.active) {
+            /* 추가 */
+            background-color: #ddd;
+        }
+
+        tr:hover td {
+            background-color: #b3eda8;
+            cursor: pointer;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        form {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .search{
+            display: flex;
+            justify-content: center;
+        }
+        .select{
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <li><a href="/">user</a></li>
+        <li><a href="/store">store</a></li>
+        <li><a href="/item">item</a></li>
+        <li><a href="/orderitem">itemorder</a></li>
+        <li><a href="/order">order</a></li>
+    </div>
+    <div class="search">
+        <div>
+            <form action="/" method="GET">
+                <input type="text" name="q" value="{{ search_name }}" placeholder="사용자 이름 검색">
+                <label for="gender">성별:</label>
+                <select id="gender" name="gender">
+                    <option value="">전체</option>
+                    <option value="Male">남성</option>
+                    <option value="Female">여성</option>
+                </select>
+                <button type="submit">검색</button>
+            </form>
+        </div>
+    </div>
+        <table border=1;>
+            <div class="header">
+                <tr>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Age</th>
+                    <th>Birthdate</th>
+                    <th>Address</th>
+                </tr>
+            </div>
+            {% if datas %}
+            {% for i in datas %}
+            <tr onclick="location.href='/user/{{ i['Id'] }}'">
+
+                <td width="150px">{{i['Name']}}</td>
+                <td width="150px">{{i['Gender']}}</td>
+                <td width="150px">{{i['Age']}}</td>
+                <td width="150px">{{i['Birthdate']}}</td>
+                <td width="150px">{{i['Address']}}</td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <p>검색결과가 없어요</p>
+            {% endif %}
+            </tr>
+        </table>
+        <div class="pagination" ailgn="center">
+            <a href="/?page={{1}}&q={{search_name}}&gender={{gender}}">처음으로</a>
+            {% if pags > 1 %}
+            <a href="/?page={{page-1}}&q={{search_name}}&gender={{gender}}">이전</a>
+            {% endif %}
+            {% for page_num in range(start_page, end_page) %}
+            {% if page_num == page %}
+
+            <strong>{{ page_num }}</strong>
+            {% else %}
+            <a href="/?page={{page_num}}&q={{search_name}}&gender={{gender}}">{{ page_num }}</a>
+            {% endif %}
+            {% endfor %}
+
+            {% if end_page < total_pages %} <a href="/?page={{page+1}}&q={{search_name}}">다음</a>
+                {% endif %}
+
+        </div>
+</body>
+
+</html>

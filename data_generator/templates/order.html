@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <table border=1 width ="100%">
+    {% for item in ordername %}
+    <tr>
+      <td width ="40%">{{item['OrderAt']}}</td>
+      <td width ="150px">{{item['StoreId']}}</td>
+      <td width ="150px">{{item['UserId']}}</td>
+    </tr>
+    {% endfor %}
+  </table> 
+</body>
+</html>
