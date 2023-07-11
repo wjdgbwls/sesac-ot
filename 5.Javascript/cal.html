@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>간단한 계산기</title>
+  <script>
+    function appendToInput(value) {
+      var input = document.getElementById('input');
+      input.value += value;
+    }
+    
+    function calculate() {
+      var input = document.getElementById('input').value;
+      var result = eval(input);
+      document.getElementById('result').value = result;
+    }
+
+    // 스크립트에서 직접 버튼 동작 정의
+    document.addEventListener('DOMContentLoaded', function() {
+      var buttons = document.querySelectorAll('.calculator-button');
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener('click', function() {
+          var value = this.dataset.value;
+          appendToInput(value);
+        });
+      }
+
+      var equalsButton = document.getElementById('equals-button');
+      equalsButton.addEventListener('click', calculate);
+    });
+  </script>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <input type="text" id="input" placeholder="계산식을 입력하세요">
+  <br>
+  <button class="btn btn-default calculator-button" data-value="1">1</button>
+  <button class="btn btn-default calculator-button" data-value="2">2</button>
+  <button class="btn btn-default calculator-button" data-value="3">3</button>
+  <button class="btn btn-default calculator-button" data-value="4">4</button>
+  <button class="btn btn-default calculator-button" data-value="5">5</button>
+  <button class="btn btn-default calculator-button" data-value="6">6</button>
+  <button class="btn btn-default calculator-button" data-value="7">7</button>
+  <button class="btn btn-default calculator-button" data-value="8">8</button>
+  <button class="btn btn-default calculator-button" data-value="9">9</button>
+  <button class="btn btn-default calculator-button" data-value="0">0</button>
+  <br>
+  <button class="btn btn-default calculator-button" data-value="+">+</button>
+  <button class="btn btn-default calculator-button" data-value="-">-</button>
+  <button class="btn btn-default calculator-button" data-value="/">/</button>
+  <button class="btn btn-default calculator-button" data-value="*">*</button>
+  <br>
+  <button class="btn btn-default" id="equals-button">=</button>
+  <br>
+  <textarea id="result" rows="4" cols="50" placeholder="결과가 여기에 표시됩니다."></textarea>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
