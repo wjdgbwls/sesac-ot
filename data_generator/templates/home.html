@@ -131,11 +131,11 @@
             {% for i in datas %}
             <tr onclick="location.href='/user/{{ i['Id'] }}'">
 
-                <td width="150px">{{i['Name']}}</td>
-                <td width="150px">{{i['Gender']}}</td>
-                <td width="150px">{{i['Age']}}</td>
-                <td width="150px">{{i['Birthdate']}}</td>
-                <td width="150px">{{i['Address']}}</td>
+                <td width="150px">{{i[0]}}</td>
+                <td width="150px">{{i[1]}}</td>
+                <td width="150px">{{i[2]}}</td>
+                <td width="150px">{{i[3]}}</td>
+                <td width="150px">{{i[4]}}</td>
             </tr>
             {% endfor %}
             {% else %}
