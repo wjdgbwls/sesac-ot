@@ -1,3 +1,4 @@
+import sqlite3
 from flask import Blueprint, render_template
 import filepath
 import csv
@@ -7,12 +8,15 @@ import csv
 #블루프린트를 생성하는 객체
 user_info_bp = Blueprint('user_info', __name__) 
 
-@user_info_bp.route('/<Id>')
-def user(Id):
+@user_info_bp.route('/<id>')
+def user(id):
+    id = (id,)
     data=[]
-    csv_reader=filepath.filepath("./csvfile/user.csv")
-    for user in csv_reader:  
-        if user['Id'] == Id:
-            data = user
-            break
-    return render_template("index_user_info.html", user=data)
+    conn=sqlite3.connect('./dbfile/user-sample.db')
+    cursor=conn.cursor()
+    query='select * from users where Id =?'
+    cursor.execute(query, id)
+    
+    result= cursor.fetchall()
+    print(result)
+    return render_template("index_user_info.html", user=result)

@@ -56,13 +56,15 @@
       <th>Birthdate</th>
       <th>Address</th>
   </tr>
+  {%for u in user%}
   <tr>
-      <td>{{ user['Name'] }}</td>
-      <td>{{ user['Gender'] }}</td>
-      <td>{{ user['Age'] }}</td>
-      <td>{{ user['Birthdate'] }}</td>
-      <td>{{ user['Address'] }}</td>
+      <td>{{ u[0] }}</td>
+      <td>{{ u[1] }}</td>
+      <td>{{ u[2] }}</td>
+      <td>{{ u[3] }}</td>
+      <td>{{ u[4] }}</td>
   </tr>
+  {% endfor %}
   </table>
   <button type="submit"><a href="/">돌아가기</a></button>
 

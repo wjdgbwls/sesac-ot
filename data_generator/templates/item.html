@@ -5,13 +5,116 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+<style>
+  table {
+      border-collapse: collapse;
+      width: 100%;
+  }
+
+
+  td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+  }
+
+  th {
+      background-color: #ffa500;
+      color: white;
+  }
+
+  tr:nth-child(even) {
+      /* 추가 */
+      background-color: #f2f2f2;
+  }
+
+  .nav {
+      text-align: center;
+      height: 50px;
+      width: 100%;
+      list-style: none;
+      margin-bottom: 20px;
+  }
+
+  li {
+      display: inline-block;
+      text-align: center;
+      margin-right: 40px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+  }
+
+  li a {
+      color: black;
+      padding: 8px 16px;
+      text-decoration: none;
+      border: 1px solid #ddd;
+      margin: 0 4px;
+  }
+
+  .pagination {
+      margin-top: 20px;
+  }
+
+  .pagination a {
+      padding: 8px 16px;
+      text-decoration: none;
+      border: 1px solid #ddd;
+      margin: 0 4px;
+  }
+
+  .pagination a.active {
+      background-color: #4CAF50;
+      color: white;
+      border: 1px solid #4CAF50;
+  }
+
+  .pagination a:hover:not(.active) {
+      /* 추가 */
+      background-color: #ddd;
+  }
+
+  tr:hover td {
+      background-color: #b3eda8;
+      cursor: pointer;
+      padding-top: 10px;
+      padding-bottom: 10px;
+  }
+
+  form {
+      margin-top: 20px;
+      margin-bottom: 20px;
+  }
+  .search{
+      display: flex;
+      justify-content: center;
+  }
+  .select{
+      margin-top: 20px;
+      margin-left: 20px;
+  }
+</style>
 <body>
+  <div class="nav">
+    <li><a href="/">user</a></li>
+    <li><a href="/store">store</a></li>
+    <li><a href="/item">item</a></li>
+    <li><a href="/orderitem">itemorder</a></li>
+    <li><a href="/order">order</a></li>
+  </div>
   <table border=1 width ="100%">
+    <div class="header">
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>UnitPrice</th>
+      </tr>
+    </div>
     {% for item in itemname %}
     <tr>
-      <td width ="40%">{{item['Name']}}</td>
-      <td width ="150px">{{item['Type']}}</td>
-      <td width ="150px">{{item['UnitPrice']}}</td>
+      <td width ="40%">{{item[1]}}</td>
+      <td width ="150px">{{item[2]}}</td>
+      <td width ="150px">{{item[3]}}</td>
     </tr>
     {% endfor %}
   </table> 

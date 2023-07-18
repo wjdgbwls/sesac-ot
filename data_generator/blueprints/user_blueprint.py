@@ -3,7 +3,7 @@ import sqlite3
 from flask import Blueprint,render_template, request
 import csv
 
-user_bp=Blueprint('user',__name__)
+user_bp=Blueprint('user', __name__)
 
 @user_bp.route('/')
 def user():
@@ -11,7 +11,7 @@ def user():
     search_name = request.args.get('q', default='', type =str)
     gender = request.args.get('gender', default='', type =str)
     per_page = 10
-    data=[]
+    data = []
      # SQLite 데이터베이스 연결
     conn = sqlite3.connect('./dbfile/user-sample.db')
     cursor = conn.cursor()
@@ -36,7 +36,7 @@ def user():
         
     for i in datas:
         data.append(i)
-    #      ##############여기 gender를 확인하고 그걸 추가하는 줄 하나 ....넣기
+  
       # 현재 페이지 계산
     current_page = page
 
@@ -50,6 +50,7 @@ def user():
     start_index = per_page * (page-1)
     end_index = per_page * page
     paginated_results =data[start_index:end_index]
+    
 
       # 현재 페이지 그룹 번호 계산
     current_group = (page - 1) // per_page

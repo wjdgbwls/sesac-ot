@@ -129,13 +129,12 @@
             </div>
             {% if datas %}
             {% for i in datas %}
-            <tr onclick="location.href='/user/{{ i['Id'] }}'">
-
-                <td width="150px">{{i[0]}}</td>
+            <tr onclick="location.href='/user/{{ i[0] }}'">
                 <td width="150px">{{i[1]}}</td>
                 <td width="150px">{{i[2]}}</td>
                 <td width="150px">{{i[3]}}</td>
                 <td width="150px">{{i[4]}}</td>
+                <td width="150px">{{i[5]}}</td>
             </tr>
             {% endfor %}
             {% else %}
