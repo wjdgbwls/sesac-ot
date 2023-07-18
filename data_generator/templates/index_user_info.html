@@ -47,22 +47,19 @@
 
 
 </style>
+<h1>{{ user[0][0] }}</h1>
 <body>
   <table>
     <tr>
-      <th>Name</th>
-      <th>Gender</th>
-      <th>Age</th>
-      <th>Birthdate</th>
+      <th>StoreName</th>
       <th>Address</th>
+      <th>Price</th>
   </tr>
   {%for u in user%}
   <tr>
       <td>{{ u[0] }}</td>
       <td>{{ u[1] }}</td>
       <td>{{ u[2] }}</td>
-      <td>{{ u[3] }}</td>
-      <td>{{ u[4] }}</td>
   </tr>
   {% endfor %}
   </table>

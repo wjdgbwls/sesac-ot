@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>상점 월별 매출</title>
+  <style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+  
+  
+    td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+  
+    th {
+        background-color: #ffa500;
+        color: white;
+    }
+  
+    tr:nth-child(even) {
+        /* 추가 */
+        background-color: #f2f2f2;
+    }
+  
+    .nav {
+        text-align: center;
+        height: 50px;
+        width: 100%;
+        list-style: none;
+        margin-bottom: 20px;
+    }
+  
+    li {
+        display: inline-block;
+        text-align: center;
+        margin-right: 40px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+  
+    li a {
+        color: black;
+        padding: 8px 16px;
+        text-decoration: none;
+        border: 1px solid #ddd;
+        margin: 0 4px;
+    }
+  
+    .pagination {
+        margin-top: 20px;
+    }
+  
+    .pagination a {
+        padding: 8px 16px;
+        text-decoration: none;
+        border: 1px solid #ddd;
+        margin: 0 4px;
+    }
+  
+    .pagination a.active {
+        background-color: #4CAF50;
+        color: white;
+        border: 1px solid #4CAF50;
+    }
+  
+    .pagination a:hover:not(.active) {
+        /* 추가 */
+        background-color: #ddd;
+    }
+  
+    tr:hover td {
+        background-color: #b3eda8;
+        cursor: pointer;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+  
+    form {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .search{
+        display: flex;
+        justify-content: center;
+    }
+    .select{
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+    #myChart {
+      width: 400px; /* 원하는 가로 크기로 설정 */
+      height: 300px; /* 원하는 세로 크기로 설정 */
+    }
+  </style>
+  
+</head>
+<body>
+  <div class="nav">
+    <li><a href="/">user</a></li>
+    <li><a href="/store">store</a></li>
+    <li><a href="/item">item</a></li>
+    <li><a href="/orderitem">itemorder</a></li>
+    <li><a href="/order">order</a></li>
+  </div>
+  <table border = 1 width = "100%">
+    <div class = "header">
+      <tr>
+        <th>Month</th>
+        <th>revenues</th>
+        <th>Count</th>
+      </tr>
+    </div>
+    {% for item in revenues %}
+    <tr>
+      <td width ="40%">{{item[0]}}</td>
+      <td width ="150px">{{item[1]}}</td>
+      <td width ="150px">{{item[2]}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <div>
+          <canvas id="myChart"></canvas>
+        </div>
+        <script>
+          const ctx = document.getElementById('myChart');
+          const pricesJSON = '{{ prices | tojson | safe }}';
+      
+          var data = {
+            labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+            datasets: [
+              {
+                label: '매출',
+                data: pricesJSON,
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+              },
+            ],
+          };
+      
+          var options = {
+            responsive: true,
+            maintainAspectRatio: false, // 차트의 가로 세로 비율을 유지하지 않음
+            scales: {
+              y: {
+            beginAtZero: true,
+            ticks: {
+              callback: function (value, index, values) {
+                return value + ' 원'; // y축 레이블에 ' 원'을 추가하여 금액으로 표시
+              }
+            }
+          }
+        }
+      };
+
+      
+          new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: options
+          });
+        </script>
+</body>
+</html>

@@ -47,3 +47,23 @@ def store():
     return render_template("store.html",datas=paginated_results,total_pages=total_pages,page=page ,
                            start_page=start_page, 
                            end_page=end_page, pags=current_page)
+@store_bp.route('/<id>')
+def store_revenues(id):
+    id = (id,)
+    conn = sqlite3.connect('./dbfile/user-sample.db')
+    cursor = conn.cursor()
+    
+    # SQL 쿼리 작성
+    query =(f"""SELECT substr(orders.OrderAt,1,7) AS Month, SUM(items.UnitPrice) AS Revenue, count(items.Id) AS count 
+                            FROM stores
+                            INNER JOIN orders ON stores.Id = orders.StoreId 
+                            INNER JOIN order_items ON orders.Id = order_items.OrderId 
+                            INNER JOIN items ON order_items.ItemId = items.Id WHERE stores.Id = ? 
+                            GROUP BY stores.Name, Month 
+                            ORDER BY Month""")
+    # 결과 가져오기
+    cursor.execute(query,id)
+    datas = cursor.fetchall()
+    prices = [revenue[1] for revenue in datas]
+    print(prices)
+    return render_template("stored_revenues.html",revenues=datas, prices=prices)

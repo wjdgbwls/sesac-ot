@@ -113,6 +113,7 @@
     </div>
     {% for i in datas %}
     <tr>
+      <tr onclick="location.href='/store/{{ i[0] }}'">
       <td width ="40%">{{i[1]}}</td>
       <td width ="150px">{{i[2]}}</td>
       <td width ="150px">{{i[3]}}</td>
@@ -135,7 +136,7 @@
 
     {% if end_page < total_pages %} <a href="/store/?page={{page+1}}">다음</a>
         {% endif %}
-
+        
 </div>
 </body>
 </html>
