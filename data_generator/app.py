@@ -5,6 +5,7 @@ from blueprints.user_blueprint import user_bp
 from blueprints.item_blueprint import item_bp
 from blueprints.orderItem_blueprint import orderItem_bp
 from blueprints.order_blueprint import order_bp
+from blueprints.kiosk_blueprint import kiosk_bp
 
 app = Flask(__name__)
 
@@ -15,6 +16,7 @@ app.register_blueprint(store_bp, url_prefix='/store')
 app.register_blueprint(item_bp, url_prefix='/item')
 app.register_blueprint(orderItem_bp, url_prefix='/orderitem')
 app.register_blueprint(user_bp)
+app.register_blueprint(kiosk_bp, url_prefix='/kiosk')
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0" , debug=True)
