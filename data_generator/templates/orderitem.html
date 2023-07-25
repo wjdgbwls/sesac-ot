@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="../static/styles.css">
-<body>
 
-    <div class = "nav">
-      <li><a href = "/">user</a></li>
-      <li><a href = "/store">store</a></li>
-      <li><a href = "/item">item</a></li>
-      <li><a href = "/orderitem">itemorder</a></li>
-      <li><a href = "/order">order</a></li>
-    </div>
-    <table border=1;>
-    <div class = "header">
+<body>
+  <div class="nav">
+    <li><a href="/">user</a></li>
+    <li><a href="/store">store</a></li>
+    <li><a href="/item">item</a></li>
+    <li><a href="/orderitem">itemorder</a></li>
+    <li><a href="/order">order</a></li>
+    <li><a href="/kiosk">kiosk</a></li>
+  </div>
+  <table border=1;>
+    <div class="header">
       <tr>
         <th>Id</th>
         <th>OrderId</th>
@@ -24,14 +26,14 @@
     </div>
     {% for item in datas %}
     <tr>
-      <td width ="40%">{{item[0]}}</td>
-      <td width ="150px">{{item[1]}}</td>
-      <td width ="150px">{{item[2]}}</td>
+      <td width="40%">{{item[0]}}</td>
+      <td width="150px">{{item[1]}}</td>
+      <td width="150px">{{item[2]}}</td>
     </tr>
-    
+
 
     {% endfor %}
-  </table> 
+  </table>
   <div class="pagination" ailgn="center">
     <a href="/orderitem/?page={{1}}">처음으로</a>
     {% if pags > 1 %}
@@ -47,6 +49,7 @@
     {% endfor %}
 
     {% if end_page < total_pages %} <a href="/orderitem/?page={{page+1}}">다음</a>
-        {% endif %}
+      {% endif %}
 </body>
+
 </html>

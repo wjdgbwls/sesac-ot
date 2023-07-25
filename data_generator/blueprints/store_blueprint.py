@@ -1,6 +1,6 @@
 import sqlite3
 from flask import Blueprint, render_template, request
-import csv
+import pandas as pd
 
 store_bp = Blueprint('store', __name__)
 
@@ -39,7 +39,7 @@ def store():
       # 현재 페이지 그룹 번호 계산
     current_group = (page - 1) // per_page
 
-      # 페이지 그룹의 시작 페이지와 종료 페이지 계산
+    # 페이지 그룹의 시작 페이지와 종료 페이지 계산
     start_page = current_group * per_page + 1
     end_page = min(start_page + per_page, total_pages)
     
@@ -64,6 +64,10 @@ def store_revenues(id):
     # 결과 가져오기
     cursor.execute(query,id)
     datas = cursor.fetchall()
+    contents = pd.read_sql_query("select * from stores", conn)
+    #TODO 변수로..
     prices = [revenue[1] for revenue in datas]
-    print(prices)
+    print(datas)
     return render_template("stored_revenues.html",revenues=datas, prices=prices)
+
+#TODO 자주방문한 매장 top5

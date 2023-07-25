@@ -5,10 +5,6 @@ order_bp=Blueprint('order', __name__)
 
 @order_bp.route('/')
 def order():
-    
-
-
-    
     page = request.args.get('page', default = 1 , type = int)
     per_page = 10
     data = []
@@ -16,7 +12,7 @@ def order():
     conn = sqlite3.connect('./dbfile/user-sample.db')
     cursor = conn.cursor()
 
-    query = "SELECT * FROM orders WHERE 1"
+    query = "SELECT * FROM orders"
     params = []
 
     cursor.execute(query, params)
