@@ -23,11 +23,11 @@
         <th>UnitPrice</th>
       </tr>
     </div>
-    {% for item in itemname %}
+    {% for item in stores %}
     <tr>
-      <td width ="40%">{{item[1]}}</td>
-      <td width ="150px">{{item[2]}}</td>
-      <td width ="150px">{{item[3]}}</td>
+      <td width ="40%">{{item.name}}</td>
+      <td width ="150px">{{item.type}}</td>
+      <td width ="150px">{{item.unitprice}}</td>
     </tr>
     {% endfor %}
   </table> 
