@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<link rel="stylesheet" href="../static/styles.css">
+<body>
+  <div class="nav">
+    <li><a href="/">user</a></li>
+    <li><a href="/store">store</a></li>
+    <li><a href="/item">item</a></li>
+    <li><a href="/orderitem">itemorder</a></li>
+    <li><a href="/order">order</a></li>
+    <li><a href="/kiosk">키오스크</a></li>
+    <li><a href="/login">키오스크</a></li>
+  </div>
+
+  <h1>키오스크</h1>
+  <table border=1;>
+    <div class="header">
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Address</th>
+        </tr>
+    </div>
+    {% for i in datas %}
+    <tr>
+      <tr onclick="location.href='/kiosk/{{ i[0] }}'">
+      <td width ="40%">{{i[1]}}</td>
+      <td width ="150px">{{i[2]}}</td>
+      <td width ="150px">{{i[3]}}</td>
+    </tr>
+    {% endfor %}
+  
+</body>
+</html>
