@@ -28,9 +28,9 @@
     </div>
     {% for item in revenues %}
     <tr>
-      <td width="40%">{{item[0]}}</td>
-      <td width="150px">{{item[1]}}</td>
-      <td width="150px">{{item[2]}}</td>
+      <td width="40%">{{item.month}}</td>
+      <td width="150px">{{item.revenues}}</td>
+      <td width="150px">{{item.count}}</td>
     </tr>
     {% endfor %}
   </table>

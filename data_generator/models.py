@@ -32,6 +32,13 @@ class Item(db.Model):
      __tablename__ = 'items'
      id = db.Column(db.String(64),primary_key=True)
      name = db.Column(db.String(64))
-     type = db.Column(db.String(64), db.ForeignKey('stores.id'))
-     unitprice = db.Column(db.String(64), db.ForeignKey('users.id'))
+     type = db.Column(db.String(64))
+     unitprice = db.Column(db.String(64))
+     orderR = db.relationship('OrderItem', backref='orders_item')
+
+class OrderItem(db.Model):
+     __tablename__ = 'orders_item'
+     id = db.Column(db.String(64),primary_key=True)
+     orderid = db.Column(db.String(64), db.ForeignKey('order.id'))
+     itemid = db.Column(db.String(64), db.ForeignKey('item.id'))
 

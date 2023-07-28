@@ -9,13 +9,13 @@
 
 <body>
   <div class="nav">
-    <li><a href="/">user</a></li>
-    <li><a href="/store">store</a></li>
-    <li><a href="/item">item</a></li>
-    <li><a href="/orderitem">itemorder</a></li>
-    <li><a href="/order">order</a></li>
-    <li><a href="/kiosk">kiosk</a></li>
-</div>
+        <li><a href="/">user</a></li>
+        <li><a href="/store">store</a></li>
+        <li><a href="/item">item</a></li>
+        <li><a href="/orderitem">itemorder</a></li>
+        <li><a href="/order">order</a></li>
+        <li><a href="/kiosk">kiosk</a></li>
+    </div>
   <h6>레이블 클릭시 매장 월별 매출로 넘어갑니다</h6>
   <table border=1;>
     <div class="header">
@@ -25,12 +25,12 @@
             <th>Address</th>
         </tr>
     </div>
-    {% for i in datas %}
+    {% for i in stores %}
     <tr>
-      <tr onclick="location.href='/store/{{ i[0] }}'">
-      <td width ="40%">{{i[1]}}</td>
-      <td width ="150px">{{i[2]}}</td>
-      <td width ="150px">{{i[3]}}</td>
+      <tr onclick="location.href='/store/{{ i.id }}'">
+      <td width ="40%">{{i.name}}</td>
+      <td width ="150px">{{i.type}}</td>
+      <td width ="150px">{{i.address}}</td>
     </tr>
     {% endfor %}
   </table>
