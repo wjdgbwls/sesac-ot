@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+  
+    td, th {
+      border: 1px solid black;
+      padding: 8px; /* Adding padding for better visual appearance */
+    }
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>장바구니</title>
+</head>
+<body>
+  <h1>장바구니</h1>
+  <table>
+      <tr>
+          <th>상품 이름</th>
+          <th>수량</th>
+          <th>가격</th>
+          <th>총 가격</th>
+      </tr>
+      {% for item_name, item_info in cart_items.items() %}
+          <tr>
+              <td>{{ item_info.name }}</td>
+              <td>{{ item_info.quantity }}</td>
+              <td>{{ item_info.price }}원</td>
+              <td>{{ item_info.sumprice }}원</td>
+              <td><a href = '/item_pop/{{item_name}}'>x</a></td>
+          </tr>
+      {% endfor %}
+  </table>
+  <p>총 비용: {{ total_price }}원</p>
+</body>
+</html>
