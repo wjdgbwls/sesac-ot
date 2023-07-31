@@ -1,7 +1,5 @@
 from flask import Flask
 from models import db
-from flask_sqlalchemy import SQLAlchemy
-from datetime import timedelta
 from blueprints.user_info_blueprint import user_info_bp
 from blueprints.store_blueprint import store_bp
 from blueprints.user_blueprint import user_bp
