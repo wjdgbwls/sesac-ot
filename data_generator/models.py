@@ -12,7 +12,7 @@ class User(db.Model):
     age = db.Column(db.Integer())
     birthdate = db.Column(db.String(32))
     address = db.Column(db.String(64))
-    #rhksrP 
+    #관계
     orderR = db.relationship('Order', backref='users')
 
 class Store(db.Model):
@@ -28,17 +28,18 @@ class Order(db.Model):
      orderat = db.Column(db.String(64))
      storeid = db.Column(db.String(64), db.ForeignKey('stores.id'))
      userid = db.Column(db.String(64), db.ForeignKey('users.id'))
+     orderR = db.relationship('OrderItem', backref='orders')
 class Item(db.Model):
      __tablename__ = 'items'
      id = db.Column(db.String(64),primary_key=True)
      name = db.Column(db.String(64))
      type = db.Column(db.String(64))
      unitprice = db.Column(db.String(64))
-     orderR = db.relationship('OrderItem', backref='orders_item')
+     orderR = db.relationship('OrderItem', backref='items')
 
 class OrderItem(db.Model):
-     __tablename__ = 'orders_item'
+     __tablename__ = 'order_items'
      id = db.Column(db.String(64),primary_key=True)
-     orderid = db.Column(db.String(64), db.ForeignKey('order.id'))
-     itemid = db.Column(db.String(64), db.ForeignKey('item.id'))
+     orderid = db.Column(db.String(64), db.ForeignKey('orders.id'))
+     itemid = db.Column(db.String(64), db.ForeignKey('items.id'))
 
