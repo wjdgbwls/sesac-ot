@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사용자 정보 입력</title>
+</head>
+<body>
+    <h2>사용자 정보 입력</h2>
+    <form id="userForm" method="POST">
+        {% csrf_token %}
+        <label for="name">이름:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="phone">전화번호:</label>
+        <input type="tel" id="phonenumber" name="phonenumber" required><br><br>
+        <input type="submit" value="제출">
+    </form>
+    <!-- <script>
+        document.getElementById("userForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: "POST",
+                    body: formData
+                });
+                
+                if (response.ok) {
+                    alert("정보가 성공적으로 전송되었습니다.");
+                } else {
+                    alert("정보 전송 중 오류가 발생했습니다.");
+                }
+            } catch (error) {
+                console.error("오류:", error);
+                alert("오류가 발생했습니다.");
+            }
+        });
+    </script> -->
+</body>
+</html>
