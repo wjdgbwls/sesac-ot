@@ -12,4 +12,5 @@ urlpatterns= [
 
     #item 목록
     path('item/', views.item_list, name = 'item'),
+
 ]
