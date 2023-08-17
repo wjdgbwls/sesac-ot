@@ -8,9 +8,12 @@
 <body>
   <ul>
     {% for item in items %}
-      <img scr ="{{ item.img.rul}}" alt ="{{item.title}}">
-    <p>{{item.price}}</p>
-    {% endfor %}
+            <li>
+                <h2>{{ item.title }}</h2>
+                <p>Price: ${{ item.price }}</p>
+                <img src="{{ item.img.url }}" alt="{{ item.title }} Image">
+            </li>
+        {% endfor %}
 
 </ul>
 </body>
