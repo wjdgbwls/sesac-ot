@@ -17,8 +17,8 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # 우리 프로젝트 전체의 미디어 업로드폴더
-MEDIA_ROOT =os.path.join(BASE_DIR,'upload')
-# 웹컴포넌트가 이미디어 폴더를 어떤 url로 접근할거냐
+MEDIA_ROOT = os.path.join(BASE_DIR,'upload')
+# 웹컴포넌트가 미디어 폴더를 어떤 url로 접근할거냐
 MEDIA_URL = '/media/'
 
 
