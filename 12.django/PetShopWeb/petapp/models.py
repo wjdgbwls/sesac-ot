@@ -9,6 +9,10 @@ class Item(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)  # 상품 가격을 저장하는 필드
     img = models.ImageField(upload_to='items/')  #이미지를 저장하는 필드
 
+class MainImg(models.Model):
+    title = models.CharField(max_length = 100)
+    img = models.ImageField(upload_to='mainimgs/')
+
 
 
     def __str__(self):
