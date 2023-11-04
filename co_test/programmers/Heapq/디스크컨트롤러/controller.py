@@ -1,3 +1,4 @@
+
 import heapq
 
 def solution(jobs):
@@ -32,3 +33,7 @@ print(solution([[0, 3], [1, 9], [2, 6]]))
 #2차원 배열에서 jobs를 for문으로 j를 돌떄 j[0]은 첫번쨰 항 0,1,2 j[1]은  3,9,6 순서대로나온다
 #2차원 배열에서 jobs[0]의 의미는 [0,3]
 #내일 다시 풀어보기
+def solution(jobs):
+    answer = 0
+    return answer
+
